@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project source="3.4.3-61c.7ae7f66" version="1.0">
+<project source="3.3.6" version="1.0">
   This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
 
   <lib desc="#Wiring" name="0">
@@ -125,13 +125,14 @@
     <comp lib="0" loc="(100,210)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="label" val="clk"/>
-      <a name="locked" val="true"/>
+    </comp>
+    <comp lib="0" loc="(130,160)" name="Constant">
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(480,180)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
       <a name="label" val="ADD_OUT"/>
-      <a name="locked" val="true"/>
       <a name="output" val="true"/>
       <a name="width" val="8"/>
     </comp>
@@ -139,9 +140,32 @@
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
       <a name="label" val="REG_OUT"/>
-      <a name="locked" val="true"/>
       <a name="output" val="true"/>
       <a name="width" val="8"/>
     </comp>
+    <comp lib="2" loc="(180,170)" name="Adder"/>
+    <comp lib="3" loc="(220,200)" name="Register">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
+    <wire from="(100,210)" to="(100,270)"/>
+    <wire from="(100,270)" to="(220,270)"/>
+    <wire from="(110,180)" to="(110,310)"/>
+    <wire from="(110,180)" to="(140,180)"/>
+    <wire from="(110,310)" to="(330,310)"/>
+    <wire from="(130,160)" to="(140,160)"/>
+    <wire from="(180,170)" to="(190,170)"/>
+    <wire from="(190,170)" to="(190,230)"/>
+    <wire from="(190,170)" to="(430,170)"/>
+    <wire from="(190,230)" to="(220,230)"/>
+    <wire from="(280,230)" to="(330,230)"/>
+    <wire from="(330,230)" to="(330,310)"/>
+    <wire from="(330,230)" to="(460,230)"/>
+    <wire from="(430,170)" to="(430,180)"/>
+    <wire from="(430,180)" to="(480,180)"/>
+    <wire from="(460,230)" to="(460,240)"/>
+    <wire from="(460,240)" to="(480,240)"/>
   </circuit>
 </project>
+<!--Sat Mar 12 23:58:58 2022-->
+<!--/home/dima/Education/ABC/ABC/lab01-->
+<!--dima-->
