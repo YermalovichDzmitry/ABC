@@ -1,0 +1,15 @@
+C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/testbench.sv {1 {vlog -work work -sv -stats=none C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/testbench.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module testbench
+
+Top level modules:
+	testbench
+
+} {} {}} C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/move.sv {1 {vlog -work work -sv -stats=none C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/move.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module move
+
+Top level modules:
+	move
+
+} {} {}}

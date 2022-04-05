@@ -1,0 +1,23 @@
+|func_1
+s0 => la.IN1
+s0 => lc.IN1
+s0 => rb.IN1
+s0 => ra.IN1
+s1 => la.IN0
+s1 => ra.IN0
+s1 => la.IN0
+s1 => ra.IN0
+s2 => ra.IN1
+s2 => ra.IN1
+s2 => la.IN1
+s2 => la.IN1
+tl => ~NO_FANOUT~
+tr => ~NO_FANOUT~
+la << la.DB_MAX_OUTPUT_PORT_TYPE
+lb << la.DB_MAX_OUTPUT_PORT_TYPE
+lc << lc.DB_MAX_OUTPUT_PORT_TYPE
+ra << ra.DB_MAX_OUTPUT_PORT_TYPE
+rb << rb.DB_MAX_OUTPUT_PORT_TYPE
+rc << ra.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,4 @@
+module move(input logic clk,
+ input logic reset,
+ input logic W, N, S, E,
+ output logic )

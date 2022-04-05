@@ -1,0 +1,58 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Education/ABC/lab2_ap
+vlab2_08
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 !s110 1648627500
+!i10b 1
+!s100 MJFfENUJh:NBlm6z_]A701
+I6jQO1mH4U^Q8M34>2mXZ10
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 lab2_08_sv_unit
+S1
+Z3 dC:/Education/ABC/ABC/lab02/Exercises/lab2_08
+w1648503399
+8C:/Education/ABC/ABC/lab02/Exercises/lab2_08/lab2_08.sv
+FC:/Education/ABC/ABC/lab02/Exercises/lab2_08/lab2_08.sv
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1648627500.000000
+!s107 C:/Education/ABC/ABC/lab02/Exercises/lab2_08/lab2_08.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Education/ABC/ABC/lab02/Exercises/lab2_08/lab2_08.sv|
+!i113 1
+Z6 o-work work -sv
+Z7 tCvgOpt 0
+vtestbench
+R0
+R1
+!i10b 1
+!s100 :Lzbhmle3d5lB>^d[;Y;T1
+IQ7QXYlBGMSQ4ZFiBm_3c]1
+R2
+!s105 testbench_sv_unit
+S1
+R3
+w1648501316
+8C:/Education/ABC/ABC/lab02/Exercises/lab2_08/testbench.sv
+FC:/Education/ABC/ABC/lab02/Exercises/lab2_08/testbench.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Education/ABC/ABC/lab02/Exercises/lab2_08/testbench.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Education/ABC/ABC/lab02/Exercises/lab2_08/testbench.sv|
+!i113 1
+R6
+R7

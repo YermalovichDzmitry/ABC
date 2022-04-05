@@ -1,0 +1,16 @@
+|lab2_08
+clk => state~1.DATAIN
+reset => state~3.DATAIN
+left => nextstate.OUTPUTSELECT
+left => nextstate.OUTPUTSELECT
+left => nextstate.S1.DATAB
+right => nextstate.DATAA
+right => nextstate.DATAA
+la <= la.DB_MAX_OUTPUT_PORT_TYPE
+lb <= lb.DB_MAX_OUTPUT_PORT_TYPE
+lc <= lc.DB_MAX_OUTPUT_PORT_TYPE
+ra <= ra.DB_MAX_OUTPUT_PORT_TYPE
+rb <= rb.DB_MAX_OUTPUT_PORT_TYPE
+rc <= rc.DB_MAX_OUTPUT_PORT_TYPE
+
+

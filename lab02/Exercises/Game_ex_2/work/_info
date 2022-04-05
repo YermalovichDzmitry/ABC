@@ -1,0 +1,58 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Education/ABC/ABC/lab02/Exercises/lab2_08
+vmove
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 !s110 1648650048
+!i10b 1
+!s100 l?ZhZYC[dNcLgD^b96V@`0
+IGDL=7`45B``51kjJPZ6D72
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 move_sv_unit
+S1
+Z3 dC:/Education/ABC/ABC/lab02/Exercises/Game_ex_2
+w1648649797
+8C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/move.sv
+FC:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/move.sv
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1648650048.000000
+!s107 C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/move.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/move.sv|
+!i113 1
+Z6 o-work work -sv
+Z7 tCvgOpt 0
+vtestbench
+R0
+R1
+!i10b 1
+!s100 3ob;CfAAOAE=V7HF6N0`G0
+IGJRjz6<6MT`T][eUmc<hz3
+R2
+!s105 testbench_sv_unit
+S1
+R3
+w1648650013
+8C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/testbench.sv
+FC:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/testbench.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/testbench.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/testbench.sv|
+!i113 1
+R6
+R7
