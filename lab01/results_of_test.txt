@@ -1,0 +1,15 @@
+Testing files...
+[main] ERROR com.cburch.logisim.gui.start.Startup - Although an Internet connection should be available, the system couldn't retrieve the data requested by the auto-updater.
+If the error persist, please contact the software maintainer
+-- AUTO-UPDATE ABORTED --
+PASSED test: Exercise 1: Sub-Circuits
+[main] ERROR com.cburch.logisim.gui.start.Startup - Although an Internet connection should be available, the system couldn't retrieve the data requested by the auto-updater.
+If the error persist, please contact the software maintainer
+-- AUTO-UPDATE ABORTED --
+PASSED test: Exercise 2: Add Machine
+[main] ERROR com.cburch.logisim.gui.start.Startup - Although an Internet connection should be available, the system couldn't retrieve the data requested by the auto-updater.
+If the error persist, please contact the software maintainer
+-- AUTO-UPDATE ABORTED --
+PASSED test: Exercise 3: Splitter
+Passed 3/3 tests
+
