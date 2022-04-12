@@ -1,5 +1,5 @@
 .data
-n: .word 9
+n: .word 20
 
 .text
 main:
@@ -13,7 +13,7 @@ fib:
     mv t0, t1 # curr_fib = next_fib;
     mv t1, t2 # next_fib = new_fib;
     addi t3, t3, -1 # уменьшить счетчик
-    j fib # loop
+    j fib # loope
 finish:
     addi a0, x0, 1 # аргумент ecall указывающий на печать целого
     addi a1, t0, 0 # аргумент ecall, значение для печати

@@ -6,16 +6,16 @@
 # asciiz директива используется дял размещения строк
 # asciiz автоматически добавит нулевой символ в конец строки
 # FIXME исправьте строки, чтобы они выдавали корректные отладочные значения 
-case1:   .asciiz "f(x) should be y, and it is: "
-case2:   .asciiz "f(x) should be y, and it is: "
-case3:   .asciiz "f(x) should be y, and it is: "
-case4:   .asciiz "f(x) should be y, and it is: "
-case5:   .asciiz "f(x) should be y, and it is: "
-case6:   .asciiz "f(x) should be y, and it is: "
-case7:   .asciiz "f(x) should be y, and it is: "
+case1:   .asciiz "f(-11) should be 50, and it is: "
+case2:   .asciiz "f(-10) should be 2, and it is: "
+case3:   .asciiz "f(-9) should be 48, and it is: "
+case4:   .asciiz "f(-8) should be 17, and it is: "
+case5:   .asciiz "f(-7) should be 13, and it is: "
+case6:   .asciiz "f(-6) should be 35, and it is: "
+case7:   .asciiz "f(-5) should be -5, and it is: "
 
 # FIXME Разместите значения из вашего варианта в этом массиве 
-output: .word   1, 2, 3, 4, 5, 6, 7
+output: .word   50,2,48,17,13,35,-5
 
 .text
 main:
@@ -27,7 +27,7 @@ main:
     jal print_str 
     # Загружаем первый аргумент функции f в a0
     # FIXME Подставьте первый аргумент case1
-    li a0, -3 
+    li a0, -11 
     # загружаем второй аргумент функции f в a1
     # `output` -- это указатель на массив, который содержит возможные выходные значения f
     la a1, output
@@ -45,7 +45,7 @@ main:
     la a0, case2
     jal print_str
     # FIXME Подставьте первый аргумент case1
-    li a0, -2
+    li a0, -10
     la a1, output
     jal f                
     jal print_int
@@ -55,7 +55,7 @@ main:
     la a0, case3
     jal print_str
     # FIXME Подставьте первый аргумент case1
-    li a0, -1
+    li a0, -9
     la a1, output
     jal f               
     jal print_int
@@ -65,7 +65,7 @@ main:
     la a0, case4
     jal print_str
     # FIXME Подставьте первый аргумент case1
-    li a0, 0
+    li a0, -8
     la a1, output
     jal f               
     jal print_int
@@ -75,7 +75,7 @@ main:
     la a0, case5
     jal print_str
     # FIXME Подставьте первый аргумент case1
-    li a0, 1
+    li a0, -7
     la a1, output
     jal f                
     jal print_int
@@ -85,7 +85,7 @@ main:
     la a0, case6
     jal print_str
     # FIXME Подставьте первый аргумент case1
-    li a0, 2
+    li a0, -6
     la a1, output
     jal f               
     jal print_int
@@ -95,7 +95,7 @@ main:
     la a0, case7
     jal print_str
     # FIXME Подставьте первый аргумент case1
-    li a0, 3
+    li a0, -5
     la a1, output
     jal f                
     jal print_int
@@ -111,8 +111,20 @@ main:
 f:
     # FIXME
     # YOUR CODE GOES HERE!
-
-    jr ra               # Всегда вызывайте jr ra для выхода из функции!
+    # ||a0|*4-44|=смещение 
+      mv s11,a0
+      addi s10,zero,-1
+      mul s11,s11,s10
+      
+      addi s9,zero,4
+      mul s11,s11,s9
+      
+      addi s11,s11,-44
+      mul s11,s11,s10
+      
+      add t0,a1,s11
+      lw a0,0(t0)
+    jr ra               
 
 # печатает одно целое число
 # вход: a0: число на печать

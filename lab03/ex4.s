@@ -2,35 +2,124 @@
 .globl recursive
 
 .data
-n: .word 8
-m: .word 2
+n: .word 853 
+m: .word 7
 
 .text
 main:
-    la t0, n
-    lw a0, 0(t0)
-    jal ra, tester
-
-    addi a1, a0, 0
-    addi a0, x0, 1
-    ecall # Print Result
-
-    addi a1, x0, '\n'
-    addi a0, x0, 11
-    ecall # Print newline
-
-    addi a0, x0, 10
-    ecall # Exit
+	  addi t5,zero,-1
+		
+	  la t3,n
+      lw t3,0(t3)
+      
+      la t4,m
+      lw t4,0(t4)
+      
+      mv a0,t3
+      mv a1,t4
+      
+      jal tester
+      addi s7,a0,0
+      
+      addi a0, x0, 1 # аргумент ecall указывающий на печать целого
+      addi a1, s7, 0 # аргумент ecall, значение для печати
+      ecall # вызов печати целого
+      addi a0, x0, 10 # аргумент ecall для завершения программы
+      ecall # выход из программы
 
 tester:
     # YOUR CODE HERE
     # вызвать итеративную и рекурсивные функции, сравнить ответ и вернуть результат, если совпал. иначе вернуть -1.
-	jalr zero, 0(ra)
-
+#     addi sp, sp, -8
+#     sw a0, 4(sp)
+#     sw ra, 0(sp)
+    mv s7,ra
+    
+	mv s10,a0
+    mv s11,a1
+    jal iterative
+    mv s9,a0
+    
+    mv a0,s10
+    mv a1,s11
+    jal recursive
+    addi s8,a0,-1
+    
+#     lw t1, 4(sp)
+#     lw ra,0(sp)
+#     addi sp, sp, 8
+    mv ra,s7
+    beq s8,s9 L10
+        addi a0,zero,-1
+        jr ra
+    L10:
+    	mv a0,s8
+        jr ra
 iterative:
     # YOUR CODE HERE
-	jalr zero, 0(ra)
+    mv s2,a0
+    mv s3,a1
+    
+    beq s2,s3,L1
+    
+    blt s2,s3,L2
+    
+    addi t4,zero,0
+    j while
+    L1:
+    	addi a0,zero,1
+        jr ra
+    L2:
+    	addi a0,zero,0
+        jr ra
+    while: blt s2,s3 L3
+    	sub s2,s2,s3
+        addi t4,t4,1
+        j while
+    L3:
+        mv a0,t4
+        jr ra
     
 recursive:
     # YOUR CODE HERE
-	jalr zero, 0(ra)
+    addi t5,t5,1
+    addi sp, sp, -8
+    sw a0, 4(sp)
+    sw ra, 0(sp)
+    
+    mv s2,a0
+    mv s3,a1
+    
+    beq s2,s3,L4
+    
+    blt s2,s3,L5
+    
+    sub s2,s2,s3
+    mv a0,s2
+    mv a1,s3
+    jal recursive
+    
+    lw t1, 4(sp)
+    lw ra,0(sp)
+    addi sp, sp, 8
+    j L6
+    
+    L4:
+    	beq t5,zero,L7
+            addi a0,zero,1
+            jr ra
+        L7:
+            addi a0,zero,2
+            jr ra
+    L5:
+    	beq t5,zero,L8
+            addi a0,zero,0
+        	jr ra
+        L8:
+            addi a0,zero,1
+            jr ra
+    L6:
+    	mv s4,a0
+        addi s4,s4,1
+        mv a0,s4
+        jr ra
