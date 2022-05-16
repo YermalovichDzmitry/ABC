@@ -1,0 +1,418 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/18.0
+vadder
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 !s110 1652717215
+!i10b 1
+!s100 ^52DEE^2W3>=?WiJSWPl32
+IQOh6a3=1B0[SclVgn0m7<2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 !s105 riscvsingle_sv_unit
+S1
+Z4 dC:/Education/ABC/ABC/lab04/exercises/exercise_1
+Z5 w1652717026
+Z6 8C:/Education/ABC/ABC/lab04/exercises/exercise_1/riscvsingle.sv
+Z7 FC:/Education/ABC/ABC/lab04/exercises/exercise_1/riscvsingle.sv
+L0 233
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1652717215.000000
+Z10 !s107 C:/Education/ABC/ABC/lab04/exercises/exercise_1/riscvsingle.sv|
+Z11 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Education/ABC/ABC/lab04/exercises/exercise_1/riscvsingle.sv|
+!i113 1
+Z12 o-work work -sv
+Z13 tCvgOpt 0
+valu
+R0
+R1
+!i10b 1
+!s100 l;lG;`F>6AC;BV>F5^h=i3
+Ieog;L50:@FC3G1ML@Pbe_2
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 284
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+valudec
+R0
+R1
+!i10b 1
+!s100 ]LTl3nB>>dVZRZHjB>nTk3
+IDAP5D28XQVdcdWb7iEI;U1
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 153
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vchoose_address
+R0
+R1
+!i10b 1
+!s100 dMm3KaG4jDiKGj<UehgK?2
+IPPTC2R^;k4FO1KLlCeann1
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 316
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vcontroller
+R0
+R1
+!i10b 1
+!s100 VW@I6_c;N[mC[0UT[86H;3
+IUzAK>U82_;<9bBIGBGaDY2
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 103
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vdatapath
+R0
+R1
+!i10b 1
+!s100 KS4j^UO]>T?2J4mcCN1B23
+IENFfofjOd4dm`R8H9?Z5H1
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 179
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vdmem
+R0
+R1
+!i10b 1
+!s100 I10?m3:1Y[PY`NmmBL:hf1
+I4AddfFZo2_;N`>k`42zHi1
+R2
+Z14 !s105 testbench_sv_unit
+S1
+R4
+Z15 w1652717150
+Z16 8C:/Education/ABC/ABC/lab04/exercises/exercise_1/testbench.sv
+Z17 FC:/Education/ABC/ABC/lab04/exercises/exercise_1/testbench.sv
+L0 67
+R8
+r1
+!s85 0
+31
+R9
+Z18 !s107 C:/Education/ABC/ABC/lab04/exercises/exercise_1/testbench.sv|
+Z19 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Education/ABC/ABC/lab04/exercises/exercise_1/testbench.sv|
+!i113 1
+R12
+R13
+vextend
+R0
+R1
+!i10b 1
+!s100 JIA^MeD1g3oRTog474Pd10
+Il@aT3foX4JgeY2jQWI[ik3
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 239
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vflopr
+R0
+R1
+!i10b 1
+!s100 clAB6jhbLcj_P288Tf=`R2
+IhaMY57D1VY]Wb>=Lz=kS:3
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 257
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vimem
+R0
+R1
+!i10b 1
+!s100 FnM]3Sg=?PT2?An1zN=^_2
+ITV@I00`>iPGMRL[?i8mL52
+R2
+R14
+S1
+R4
+R15
+R16
+R17
+L0 56
+R8
+r1
+!s85 0
+31
+R9
+R18
+R19
+!i113 1
+R12
+R13
+vmaindec
+R0
+R1
+!i10b 1
+!s100 gfARA2A@NjH_nQed]AWkZ0
+I=ZOd5NmA6U@BQV=A:6AGb0
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 125
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vmux2
+R0
+R1
+!i10b 1
+!s100 ^YM8`D=l2cm5Hl1I4`PF:3
+INOW4ng0=UzIF_6T?YULmo3
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 267
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vmux3
+R0
+R1
+!i10b 1
+!s100 U[[JkGei<D9R9SBHmm32R2
+IFYTkHi]b<oOmMDHe8jRG`1
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 275
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vregfile
+R0
+R1
+!i10b 1
+!s100 ]l?P;cZYCIYl;gDJa9j273
+ICZP8lB@<Df9azOVbMQzF30
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 213
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vriscvsingle
+R0
+R1
+!i10b 1
+!s100 =f_?j4IO>B7XMAB8[cKCC0
+I_=mU78K^XDmAc<6@9<`_U2
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 81
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vtestbench
+R0
+R1
+!i10b 1
+!s100 2QUE3BNL><zIDgK[M5Tch3
+Ia>m2R3`T3fjYlnABNM4L73
+R2
+R14
+S1
+R4
+R15
+R16
+R17
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R18
+R19
+!i113 1
+R12
+R13
+vtop
+R0
+R1
+!i10b 1
+!s100 dXZABj1E3H5G8[CeTSjfc1
+IFDO;^SUBNV^<a2Ai4hfAQ2
+R2
+R14
+S1
+R4
+R15
+R16
+R17
+L0 43
+R8
+r1
+!s85 0
+31
+R9
+R18
+R19
+!i113 1
+R12
+R13

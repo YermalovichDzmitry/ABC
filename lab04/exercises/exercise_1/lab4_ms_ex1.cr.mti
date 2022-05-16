@@ -1,0 +1,30 @@
+C:/Education/ABC/ABC/lab04/exercises/exercise_1/riscvsingle.sv {1 {vlog -work work -sv -stats=none C:/Education/ABC/ABC/lab04/exercises/exercise_1/riscvsingle.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module riscvsingle
+-- Compiling module controller
+-- Compiling module maindec
+-- Compiling module aludec
+-- Compiling module datapath
+-- Compiling module regfile
+-- Compiling module adder
+-- Compiling module extend
+-- Compiling module flopr
+-- Compiling module mux2
+-- Compiling module mux3
+-- Compiling module alu
+-- Compiling module choose_address
+
+Top level modules:
+	riscvsingle
+
+} {} {}} C:/Education/ABC/ABC/lab04/exercises/exercise_1/testbench.sv {1 {vlog -work work -sv -stats=none C:/Education/ABC/ABC/lab04/exercises/exercise_1/testbench.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module testbench
+-- Compiling module top
+-- Compiling module imem
+-- Compiling module dmem
+
+Top level modules:
+	testbench
+
+} {} {}}

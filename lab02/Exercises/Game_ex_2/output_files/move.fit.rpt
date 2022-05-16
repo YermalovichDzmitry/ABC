@@ -1,5 +1,5 @@
 Fitter report for move
-Tue Mar 29 17:40:21 2022
+Tue May 10 15:15:04 2022
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -62,7 +62,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Tue Mar 29 17:40:21 2022       ;
+; Fitter Status                   ; Successful - Tue May 10 15:15:04 2022       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; move                                        ;
 ; Top-level Entity Name           ; move                                        ;
@@ -152,13 +152,14 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.00        ;
+; Average used               ; 1.01        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.3%      ;
-;     Processors 3-4         ;   0.1%      ;
+;     Processor 3            ;   0.3%      ;
+;     Processor 4            ;   0.1%      ;
 +----------------------------+-------------+
 
 
@@ -177,8 +178,8 @@ refer to the applicable agreement for further details.
 ; Type                ; Total [A + B]     ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+-------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                   ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 39 ) ; 0.00 % ( 0 / 39 )          ; 0.00 % ( 0 / 39 )        ;
-;     -- Achieved     ; 0.00 % ( 0 / 39 ) ; 0.00 % ( 0 / 39 )          ; 0.00 % ( 0 / 39 )        ;
+;     -- Requested    ; 0.00 % ( 0 / 41 ) ; 0.00 % ( 0 / 41 )          ; 0.00 % ( 0 / 41 )        ;
+;     -- Achieved     ; 0.00 % ( 0 / 41 ) ; 0.00 % ( 0 / 41 )          ; 0.00 % ( 0 / 41 )        ;
 ;                     ;                   ;                            ;                          ;
 ; Routing (by net)    ;                   ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )  ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -201,7 +202,7 @@ refer to the applicable agreement for further details.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 39 )     ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 41 )     ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 0 )      ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -209,7 +210,7 @@ refer to the applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/Education/ABC/ABC/lab02/Exercises/SecondExercise/output_files/move.pin.
+The pin-out file can be found in C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/output_files/move.pin.
 
 
 +------------------------------------------------------------------------------------------+
@@ -220,9 +221,9 @@ The pin-out file can be found in C:/Education/ABC/ABC/lab02/Exercises/SecondExer
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 9 / 18,480         ; < 1 % ;
 ; ALMs needed [=A-B+C]                                        ; 9                  ;       ;
 ;     [A] ALMs used in final placement [=a+b+c+d]             ; 10 / 18,480        ; < 1 % ;
-;         [a] ALMs used for LUT logic and registers           ; 5                  ;       ;
+;         [a] ALMs used for LUT logic and registers           ; 6                  ;       ;
 ;         [b] ALMs used for LUT logic                         ; 4                  ;       ;
-;         [c] ALMs used for registers                         ; 1                  ;       ;
+;         [c] ALMs used for registers                         ; 0                  ;       ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                  ;       ;
 ;     [B] Estimate of ALMs recoverable by dense packing       ; 1 / 18,480         ; < 1 % ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 18,480         ; 0 %   ;
@@ -233,16 +234,16 @@ The pin-out file can be found in C:/Education/ABC/ABC/lab02/Exercises/SecondExer
 ;                                                             ;                    ;       ;
 ; Difficulty packing design                                   ; Low                ;       ;
 ;                                                             ;                    ;       ;
-; Total LABs:  partially or completely used                   ; 2 / 1,848          ; < 1 % ;
-;     -- Logic LABs                                           ; 2                  ;       ;
+; Total LABs:  partially or completely used                   ; 3 / 1,848          ; < 1 % ;
+;     -- Logic LABs                                           ; 3                  ;       ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                  ;       ;
 ;                                                             ;                    ;       ;
-; Combinational ALUT usage for logic                          ; 11                 ;       ;
+; Combinational ALUT usage for logic                          ; 13                 ;       ;
 ;     -- 7 input functions                                    ; 1                  ;       ;
-;     -- 6 input functions                                    ; 5                  ;       ;
+;     -- 6 input functions                                    ; 4                  ;       ;
 ;     -- 5 input functions                                    ; 0                  ;       ;
-;     -- 4 input functions                                    ; 3                  ;       ;
-;     -- <=3 input functions                                  ; 2                  ;       ;
+;     -- 4 input functions                                    ; 4                  ;       ;
+;     -- <=3 input functions                                  ; 4                  ;       ;
 ; Combinational ALUT usage for route-throughs                 ; 0                  ;       ;
 ;                                                             ;                    ;       ;
 ; Dedicated logic registers                                   ; 11                 ;       ;
@@ -281,8 +282,8 @@ The pin-out file can be found in C:/Education/ABC/ABC/lab02/Exercises/SecondExer
 ; Peak interconnect usage (total/H/V)                         ; 0.1% / 0.1% / 0.2% ;       ;
 ; Maximum fan-out                                             ; 11                 ;       ;
 ; Highest non-global fan-out                                  ; 11                 ;       ;
-; Total fan-out                                               ; 95                 ;       ;
-; Average fan-out                                             ; 2.44               ;       ;
+; Total fan-out                                               ; 97                 ;       ;
+; Average fan-out                                             ; 2.37               ;       ;
 +-------------------------------------------------------------+--------------------+-------+
 
 
@@ -294,9 +295,9 @@ The pin-out file can be found in C:/Education/ABC/ABC/lab02/Exercises/SecondExer
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 9 / 18480 ( < 1 % )  ; 0 / 18480 ( 0 % )              ;
 ; ALMs needed [=A-B+C]                                        ; 9                    ; 0                              ;
 ;     [A] ALMs used in final placement [=a+b+c+d]             ; 10 / 18480 ( < 1 % ) ; 0 / 18480 ( 0 % )              ;
-;         [a] ALMs used for LUT logic and registers           ; 5                    ; 0                              ;
+;         [a] ALMs used for LUT logic and registers           ; 6                    ; 0                              ;
 ;         [b] ALMs used for LUT logic                         ; 4                    ; 0                              ;
-;         [c] ALMs used for registers                         ; 1                    ; 0                              ;
+;         [c] ALMs used for registers                         ; 0                    ; 0                              ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                    ; 0                              ;
 ;     [B] Estimate of ALMs recoverable by dense packing       ; 1 / 18480 ( < 1 % )  ; 0 / 18480 ( 0 % )              ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 18480 ( 0 % )    ; 0 / 18480 ( 0 % )              ;
@@ -307,16 +308,16 @@ The pin-out file can be found in C:/Education/ABC/ABC/lab02/Exercises/SecondExer
 ;                                                             ;                      ;                                ;
 ; Difficulty packing design                                   ; Low                  ; Low                            ;
 ;                                                             ;                      ;                                ;
-; Total LABs:  partially or completely used                   ; 2 / 1848 ( < 1 % )   ; 0 / 1848 ( 0 % )               ;
-;     -- Logic LABs                                           ; 2                    ; 0                              ;
+; Total LABs:  partially or completely used                   ; 3 / 1848 ( < 1 % )   ; 0 / 1848 ( 0 % )               ;
+;     -- Logic LABs                                           ; 3                    ; 0                              ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
-; Combinational ALUT usage for logic                          ; 11                   ; 0                              ;
+; Combinational ALUT usage for logic                          ; 13                   ; 0                              ;
 ;     -- 7 input functions                                    ; 1                    ; 0                              ;
-;     -- 6 input functions                                    ; 5                    ; 0                              ;
+;     -- 6 input functions                                    ; 4                    ; 0                              ;
 ;     -- 5 input functions                                    ; 0                    ; 0                              ;
-;     -- 4 input functions                                    ; 3                    ; 0                              ;
-;     -- <=3 input functions                                  ; 2                    ; 0                              ;
+;     -- 4 input functions                                    ; 4                    ; 0                              ;
+;     -- <=3 input functions                                  ; 4                    ; 0                              ;
 ; Combinational ALUT usage for route-throughs                 ; 0                    ; 0                              ;
 ; Memory ALUT usage                                           ; 0                    ; 0                              ;
 ;     -- 64-address deep                                      ; 0                    ; 0                              ;
@@ -345,7 +346,7 @@ The pin-out file can be found in C:/Education/ABC/ABC/lab02/Exercises/SecondExer
 ;     -- Registered Output Connections                        ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; Internal Connections                                        ;                      ;                                ;
-;     -- Total Connections                                    ; 95                   ; 0                              ;
+;     -- Total Connections                                    ; 97                   ; 0                              ;
 ;     -- Registered Connections                               ; 26                   ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; External Connections                                        ;                      ;                                ;
@@ -927,7 +928,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+---------------------+-------------+--------------+
-; |move                      ; 8.5 (8.5)            ; 9.5 (9.5)                        ; 1.0 (1.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 11 (11)             ; 11 (11)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 8    ; 0            ; |move               ; move        ; work         ;
+; |move                      ; 9.0 (9.0)            ; 9.0 (9.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 13 (13)             ; 11 (11)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 8    ; 0            ; |move               ; move        ; work         ;
 +----------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1025,21 +1026,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------+------------------------+
 ; Routing Resource Type        ; Usage                  ;
 +------------------------------+------------------------+
-; Block interconnects          ; 15 / 140,056 ( < 1 % ) ;
-; C12 interconnects            ; 2 / 6,048 ( < 1 % )    ;
+; Block interconnects          ; 17 / 140,056 ( < 1 % ) ;
+; C12 interconnects            ; 1 / 6,048 ( < 1 % )    ;
 ; C2 interconnects             ; 5 / 54,648 ( < 1 % )   ;
-; C4 interconnects             ; 6 / 25,920 ( < 1 % )   ;
+; C4 interconnects             ; 10 / 25,920 ( < 1 % )  ;
 ; DQS bus muxes                ; 0 / 17 ( 0 % )         ;
 ; DQS-18 I/O buses             ; 0 / 17 ( 0 % )         ;
 ; DQS-9 I/O buses              ; 0 / 17 ( 0 % )         ;
-; Direct links                 ; 0 / 140,056 ( 0 % )    ;
+; Direct links                 ; 2 / 140,056 ( < 1 % )  ;
 ; Global clocks                ; 1 / 16 ( 6 % )         ;
-; Local interconnects          ; 11 / 36,960 ( < 1 % )  ;
+; Local interconnects          ; 7 / 36,960 ( < 1 % )   ;
 ; Quadrant clocks              ; 0 / 88 ( 0 % )         ;
 ; R14 interconnects            ; 5 / 5,984 ( < 1 % )    ;
-; R14/C12 interconnect drivers ; 6 / 9,504 ( < 1 % )    ;
+; R14/C12 interconnect drivers ; 5 / 9,504 ( < 1 % )    ;
 ; R3 interconnects             ; 10 / 60,192 ( < 1 % )  ;
-; R6 interconnects             ; 7 / 127,072 ( < 1 % )  ;
+; R6 interconnects             ; 8 / 127,072 ( < 1 % )  ;
 ; Spine clocks                 ; 1 / 120 ( < 1 % )      ;
 ; Wire stub REs                ; 0 / 7,344 ( 0 % )      ;
 +------------------------------+------------------------+
@@ -1163,7 +1164,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------+----------------------+-------------------+
 ; Source Clock(s) ; Destination Clock(s) ; Delay Added in ns ;
 +-----------------+----------------------+-------------------+
-; clk             ; clk                  ; 3.3               ;
+; clk             ; clk                  ; 3.1               ;
 +-----------------+----------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
@@ -1175,13 +1176,13 @@ This will disable optimization of problematic paths and expose them for further 
 ; Source Register ; Destination Register ; Delay Added in ns ;
 +-----------------+----------------------+-------------------+
 ; state.S2        ; state.S4             ; 0.304             ;
-; state.S5        ; state.S3             ; 0.290             ;
-; state.S9        ; state.S10            ; 0.287             ;
-; state.S7        ; state.S0             ; 0.283             ;
-; state.S8        ; state.S0             ; 0.248             ;
+; state.S9        ; state.S10            ; 0.302             ;
+; state.S5        ; state.S6             ; 0.290             ;
+; state.S1        ; state.S0             ; 0.258             ;
 ; state.S0        ; state.S1             ; 0.207             ;
-; state.S1        ; state.S0             ; 0.192             ;
 ; state.S10       ; state.S9             ; 0.186             ;
+; state.S4        ; state.S8             ; 0.115             ;
+; state.S6        ; state.S7             ; 0.115             ;
 +-----------------+----------------------+-------------------+
 Note: This table only shows the top 8 path(s) that have the largest delay added for hold.
 
@@ -1213,7 +1214,7 @@ Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Tim
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:05
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:04
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
@@ -1225,24 +1226,24 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
     Info (170196): Router estimated peak interconnect usage is 0% of the available device resources in the region that extends from location X33_Y0 to location X43_Y10
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.20 seconds.
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
+Info (11888): Total time spent on timing analysis during the Fitter is 0.19 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:02
-Info (144001): Generated suppressed messages file C:/Education/ABC/ABC/lab02/Exercises/SecondExercise/output_files/move.fit.smsg
+Info (144001): Generated suppressed messages file C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/output_files/move.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 6234 megabytes
-    Info: Processing ended: Tue Mar 29 17:40:22 2022
-    Info: Elapsed time: 00:00:20
+    Info: Peak virtual memory: 6240 megabytes
+    Info: Processing ended: Tue May 10 15:15:05 2022
+    Info: Elapsed time: 00:00:19
     Info: Total CPU time (on all processors): 00:00:27
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/Education/ABC/ABC/lab02/Exercises/SecondExercise/output_files/move.fit.smsg.
+The suppressed messages can be found in C:/Education/ABC/ABC/lab02/Exercises/Game_ex_2/output_files/move.fit.smsg.
 
 

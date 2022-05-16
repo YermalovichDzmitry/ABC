@@ -24,10 +24,22 @@ around: slt  x4, x7, x2         # x4 = (3 < 5)  = 1       28        0023A233
         sw   x7, 84(x3)         # [96] = 7                34        0471AA23 
         lw   x2, 96(x0)         # x2 = [96] = 7           38        06002103 
         add  x9, x2, x5         # x9 = (7 + 11) = 18      3C        005104B3
-        jal  x3, end            # jump to end, x3 = 0x44  40        008001EF
-        addi x2, x0, 1          # shouldn't happen        44        00100113
-end:    add  x2, x2, x9         # x2 = (7 + 18)  = 25     48        00910133
-        sw   x2, 0x20(x3)       # mem[100] = 25           4C        0221A023 
-done:   beq  x2, x2, done       # infinite loop           50        00210063
-		
+        #jal  x3, end            # jump to end, x3 = 0x44 40        008001EF
+        addi x6, x0, 0x28                               # 40        02800313
+
+        jalr  x3, x6, 0x20                              # 44        020301E7
+        addi x2, x0, 1          # shouldn't happen        48        00100113
+end:    add  x2, x2, x9         # x2 = (7 + 18)  = 25     4C        00910133
+        sw   x2, 0x20(x3)       # mem[100] = 25           50        0221A023
+done:   beq  x2, x2, done       # infinite loop           54        00210063
+
+
+
+        #addi x2, x0, 5                                              00800113
+        #addi x2, x0, 5          # x2 = 5                  0         00500113
+        #sw   x2, 0x20(x3)       # mem[100] = 5           4C         0221A023
+        #addi x9, x0, 0x30       #                         50        03000893
+        #jalr x2,x9,0x28         #                         54        02048167
+        #addi x5, x0, 0          # x3 = 12                 58        00000293
+        #sw   x2, 0x20(x3)       #                         5C        0221A023
 		
