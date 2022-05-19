@@ -1,0 +1,13 @@
+C:/Education/ABC/ABC/lab04/exercises/exercise_2/controller.sv {1 {vlog -work work -sv -stats=none C:/Education/ABC/ABC/lab04/exercises/exercise_2/controller.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package controller_sv_unit
+-- Compiling module controller
+-- Compiling module aludec
+-- Compiling module state_machine
+-- Compiling module DistinguishImmSrc
+-- Compiling module testbench
+
+Top level modules:
+	testbench
+
+} {} {}}
