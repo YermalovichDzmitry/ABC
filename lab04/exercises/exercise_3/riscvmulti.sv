@@ -1,0 +1,331 @@
+module riscvmulti(input logic clk, reset,
+output logic [31:0] adr, writedata,
+output logic memwrite,
+input logic [31:0] readdata);
+ logic zero, pcen, irwrite, regwrite,
+ alusrca, iord, memtoreg, regdst;
+ logic [1:0] alusrcb, pcsrc;
+ logic [2:0] alucontrol;
+ logic [5:0] op, funct;
+ controller c(clk, reset, op, funct, zero,
+ pcen, memwrite, irwrite, regwrite,
+ alusrca, iord, memtoreg, regdst,
+ alusrcb, pcsrc, alucontrol);
+ datapath dp(clk, reset,
+pcen, irwrite, regwrite,
+alusrca, iord, memtoreg, regdst,
+alusrcb, pcsrc, alucontrol,
+op, funct, zero,
+adr, writedata, readdata);
+endmodule
+
+module controller(input logic clk, reset,
+ input logic [5:0] op, funct,
+ input logic zero,
+ output logic pcen, memwrite,
+irwrite, regwrite,
+ output logic alusrca, iord,
+ memtoreg, regdst,
+ output logic [1:0] alusrcb, pcsrc,
+ output logic [2:0] alucontrol);
+ logic [1:0] aluop;
+ logic branch, pcwrite;
+ // Main Decoder and ALU Decoder subunits.
+ maindec md(clk, reset, op,
+pcwrite, memwrite, irwrite, regwrite,
+ alusrca, branch, iord, memtoreg, regdst,
+alusrcb, pcsrc, aluop);
+ aludec ad(funct, aluop, alucontrol);
+ assign pcen = pcwrite | (branch & zero);
+endmodule
+
+
+module maindec(input logic clk, reset,
+ input logic [5:0] op,
+ output logic pcwrite, memwrite,
+ irwrite, regwrite,
+ output logic alusrca, branch, iord,
+ memtoreg, regdst,
+ output logic [1:0] alusrcb, pcsrc,
+ output logic [1:0] aluop);
+ typedef enum logic [3:0] {FETCH, DECODE, MEMADR,
+ MEMRD, MEMWB, MEMWR, RTYPEEX,
+ RTYPEWB, BEQEX, ADDIEX,
+ ADDIWB, JEX} statetype;
+ statetype state[3:0];
+ statetype nextstate[3:0];
+ parameter LW = 6'b100011;// Opcode for lw
+ parameter SW = 6'b101011;// Opcode for sw
+ parameter RTYPE = 6'b000000;// Opcode for R-type
+ parameter BEQ = 6'b000100;// Opcode for beq
+ parameter ADDI = 6'b001000;// Opcode for addi
+ parameter J = 6'b000010;// Opcode for j
+ reg [14:0] controls;
+ // state register
+ always_ff @(posedge clk or posedge reset)
+ if (reset) state <= FETCH;
+ else state <= nextstate;
+ 
+  always_comb
+ case(state)
+ FETCH: nextstate <= DECODE;
+ DECODE: case(op)
+ LW: nextstate <= MEMADR;
+ SW: nextstate <= MEMADR;
+ RTYPE: nextstate <= RTYPEEX;
+ BEQ: nextstate <= BEQEX;
+ ADDI: nextstate <= ADDIEX;
+ J: nextstate <= JEX;
+ default: nextstate <= FETCH;
+ // default should never happen
+ endcase
+ MEMADR: case(op)
+ LW: nextstate <= MEMRD;
+ SW: nextstate <= MEMWR;
+ default: nextstate <= FETCH;
+ // default should never happen
+ endcase
+ MEMRD: nextstate <= MEMWB;
+ MEMWB: nextstate <= FETCH;
+ MEMWR: nextstate <= FETCH;
+ RTYPEEX: nextstate <= RTYPEWB;
+ RTYPEWB: nextstate <= FETCH;
+ BEQEX: nextstate <= FETCH;
+ ADDIEX: nextstate <= ADDIWB;
+ ADDIWB: nextstate <= FETCH;
+ JEX: nextstate <= FETCH;
+ default: nextstate <= FETCH;
+// default should never happen
+ endcase
+ // output logic
+ assign {pcwrite, memwrite, irwrite, regwrite,
+ alusrca, branch, iord, memtoreg, regdst,
+ alusrcb, pcsrc, aluop} = controls;
+ always_comb
+ case (state)
+ FETCH: controls <= 15'b1010_00000_0100_00;
+ DECODE: controls <= 15'b0000_00000_1100_00;
+ MEMADR: controls <= 15'b0000_10000_1000_00;
+ MEMRD: controls <= 15'b0000_00100_0000_00;
+ MEMWB: controls <= 15'b0001_00010_0000_00;
+ MEMWR: controls <= 15'b0100_00100_0000_00;
+ RTYPEEX: controls <= 15'b0000_10000_0000_10;
+ RTYPEWB: controls <= 15'b0001_00001_0000_00;
+ BEQEX: controls <= 15'b0000_11000_0001_01;
+ ADDIEX: controls <= 15'b0000_10000_1000_00;
+ ADDIWB: controls <= 15'b0001_00000_0000_00;
+ JEX: controls <= 15'b1000_00000_0010_00;
+ default: controls <= 15'b0000_xxxxx_xxxx_xx;
+ endcase
+endmodule
+
+module aludec(input logic [5:0] funct,
+ input logic [1:0] aluop,
+ output logic [2:0] alucontrol);
+ always_comb
+ case(aluop)
+ 2'b00: alucontrol <= 3'b010; // add
+ 2'b01: alucontrol <= 3'b110; // sub
+ default: case(funct) // RTYPE
+ 6'b100000: alucontrol <= 3'b010; // ADD
+ 6'b100010: alucontrol <= 3'b110; // SUB
+ 6'b100100: alucontrol <= 3'b000; // AND
+ 6'b100101: alucontrol <= 3'b001; // OR
+ 6'b101010: alucontrol <= 3'b111; // SLT
+ default: alucontrol <= 3'bxxx; // ???
+ endcase
+ endcase
+endmodule
+
+module datapath(input logic clk, reset,
+ input logic pcen, irwrite,
+ input logic regwrite,
+ input logic alusrca, iord,
+ memtoreg, regdst,
+ input logic [1:0] alusrcb, pcsrc,
+ input logic [2:0] alucontrol,
+ output logic [5:0] op, funct,
+ output logic zero,
+ output logic [31:0] adr, writedata,
+ input logic [31:0] readdata);
+ // Internal signals of the datapath module.
+ logic [4:0] writereg;
+ logic [31:0] pcnext, pc;
+ logic [31:0] instr, data, srca, srcb;
+ logic [31:0] a;
+ logic [31:0] aluresult, aluout;
+ logic [31:0] signimm; // sign-extended immediate
+ logic [31:0] signimmsh; // sign-extended immediate
+ // shifted left by 2
+ logic [31:0] wd3, rd1, rd2;
+ // op and funct fields to controller
+ assign op = instr[31:26];
+ assign funct = instr[5:0];
+ // datapath
+ flopenr #(32) pcreg(clk, reset, pcen, pcnext, pc);
+ mux2 #(32) adrmux(pc, aluout, iord, adr);
+ flopenr #(32) instrreg(clk, reset, irwrite,
+ readdata, instr);
+ flopr #(32) datareg(clk, reset, readdata, data);
+ mux2 #(5) regdstmux(instr[20:16], instr[15:11],
+ regdst, writereg);
+ mux2 #(32) wdmux(aluout, data, memtoreg, wd3);
+ regfile rf(clk, regwrite, instr[25:21],
+ instr[20:16],
+ writereg, wd3, rd1, rd2);
+ signext se(instr[15:0], signimm);
+ sl2 immsh(signimm, signimmsh);
+ flopr #(32) areg(clk, reset, rd1, a);
+ flopr #(32) breg(clk, reset, rd2, writedata);
+ mux2 #(32) srcamux(pc, a, alusrca, srca);
+ mux4 #(32) srcbmux(writedata, 32'b100,
+ signimm, signimmsh,
+ alusrcb, srcb);
+ alu alu(srca, srcb, alucontrol,
+aluresult, zero);
+ flopr #(32) alureg(clk, reset, aluresult, aluout);
+ mux3 #(32) pcmux(aluresult, aluout,
+ {pc[31:28], instr[25:0], 2'b00},
+pcsrc, pcnext);
+endmodule
+
+module flopenr #(parameter WIDTH = 8)
+ (input logic clk, reset,
+ input logic en,
+ input logic [WIDTH-1:0] d,
+ output logic [WIDTH-1:0] q);
+ always_ff @(posedge clk, posedge reset)
+ if (reset) q <= 0;
+ else if (en) q <= d;
+endmodule
+module mux3 #(parameter WIDTH = 8)
+(input logic [WIDTH-1:0] d0, d1, d2,
+input logic [1:0] s,
+output logic [WIDTH-1:0] y);
+ assign #1 y = s[1] ? d2 : (s[0] ? d1 : d0);
+endmodule
+module mux4 #(parameter WIDTH = 8)
+ (input logic [WIDTH-1:0] d0, d1, d2, d3,
+input logic [1:0] s,
+output logic [WIDTH-1:0] y);
+ always_comb
+ case(s)
+ 2'b00: y <= d0;
+ 2'b01: y <= d1;
+ 2'b10: y <= d2;
+ 2'b11: y <= d3;
+ endcase
+endmodule
+
+
+module top(input logic clk, reset,
+ output logic [31:0] writedata, dataadr,
+ output logic memwrite);
+ logic [31:0] pc, instr, readdata;
+
+ // instantiate processor and memories
+ riscvmulti riscvmulti(clk, reset, pc, instr, memwrite, dataadr,
+ writedata, readdata);
+ imem imem(pc[7:2], instr);
+ dmem dmem(clk, memwrite, dataadr, writedata, readdata);
+endmodule
+module dmem(input logic clk, we,
+ input logic [31:0] a, wd,
+ output logic [31:0] rd);
+ logic [31:0] RAM[63:0];
+ assign rd = RAM[a[31:2]]; // word aligned
+ always_ff @(posedge clk)
+ if (we) RAM[a[31:2]] <= wd;
+endmodule
+module imem(input logic [5:0] a,
+ output logic [31:0] rd);
+ logic [31:0] RAM[63:0];
+ initial
+ $readmemh("memfile.dat",RAM);
+ assign rd = RAM[a]; // word aligned
+endmodule
+
+
+module alu(input logic [31:0] A, B,
+ input logic [3:0] F, // SRLV, XORI
+ input logic [4:0] shamt, // SRLV
+ output logic [31:0] Y, output Zero);
+ logic [31:0] S, Bout;
+ assign Bout = F[3] ? ~B : B; // SRLV, XORI
+ assign S = A + Bout + F[3]; // SRLV, XORI
+ always_comb
+ case (F[2:0])
+ 3'b000: Y <= A & Bout;
+ 3'b001: Y <= A | Bout;
+ 3'b010: Y <= S;
+ 3'b011: Y <= S[31];
+ 3'b100: Y <= (Bout >> shamt); // SRLV
+ 3'b101: Y <= A ^ Bout; // XORI
+ endcase
+ assign Zero = (Y == 32'b0);
+endmodule
+
+// mux5 is needed for ORI, XORI
+module mux5 #(parameter WIDTH = 8)
+(input [WIDTH-1:0] d0, d1, d2, d3, d4,
+ input [2:0] s,
+ output reg [WIDTH-1:0] y);
+ always_comb
+ case(s)
+ 3'b000: y <= d0;
+ 3'b001: y <= d1;
+ 3'b010: y <= d2;
+ 3'b011: y <= d3;
+ 3'b100: y <= d4;
+ endcase
+endmodule
+// zeroext is needed for ORI, XORI
+module zeroext(input [15:0] a,
+ output [31:0] y);
+ assign y = {16'b0, a};
+endmodule
+
+
+module regfile(input logic clk,
+ input logic we3,
+ input logic [4:0] ra1, ra2, wa3,
+ input logic [31:0] wd3,
+ output logic [31:0] rd1, rd2);
+ logic [31:0] rf[31:0];
+ // three ported register file
+ // read two ports combinationally
+ // write third port on rising edge of clk
+ // register 0 hardwired to 0
+ always_ff @(posedge clk)
+ if (we3) rf[wa3] <= wd3;
+ assign rd1 = (ra1 != 0) ? rf[ra1] : 0;
+ assign rd2 = (ra2 != 0) ? rf[ra2] : 0;
+endmodule
+module adder(input logic [31:0] a, b,
+ output logic [31:0] y);
+ assign y = a + b;
+endmodule
+module sl2(input logic [31:0] a,
+ output logic [31:0] y);
+ // shift left by 2
+ assign y = {a[29:0], 2'b00};
+endmodule
+module signext(input logic [15:0] a,
+ output logic [31:0] y);
+
+ assign y = {{16{a[15]}}, a};
+endmodule
+module flopr #(parameter WIDTH = 8)
+ (input logic clk, reset,
+ input logic [WIDTH-1:0] d,
+ output logic [WIDTH-1:0] q);
+ always_ff @(posedge clk, posedge reset)
+ if (reset) q <= 0;
+ else q <= d;
+endmodule
+module mux2 #(parameter WIDTH = 8)
+ (input logic [WIDTH-1:0] d0, d1,
+ input logic s,
+ output logic [WIDTH-1:0] y);
+ assign y = s ? d1 : d0;
+endmodule
